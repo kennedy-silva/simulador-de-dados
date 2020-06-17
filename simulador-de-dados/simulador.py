@@ -1,32 +1,25 @@
 from random import randint
+import PySimpleGUI as sg
 
-print('-' * 30)
-print('SEJA BEM VINDO AO SIMULADOR DE DADOS')
-print('-' * 30)
 
-print('Você quer jogar o dado?')
-escolha = input('Digite [SIM] para rodar e [NÃO] para não rodar: ').strip().lower()
-print('-' * 30)
+class TelaSimulador:
+    def __init__(self):
+        sg.change_look_and_feel('Dark')
+        self.layout = [
+            [sg.Text('-' * 100)],
+            [sg.Text('SEJA BEM VINDO AO SIMULADOR DE DADOS')],
+            [sg.Text('-' * 100)],
+            [sg.Button('RODAR O DADO', size=(50, 3))],
+            [sg.Text('NÚMERO ALEATÓRIO ABAIXO')],
+            [sg.Output(size=(60, 20))]
+        ]
 
-while True:
-    if escolha == 'sim':
-        numero_escolhido = randint(1, 6)
-        print('Número aleatório:',numero_escolhido)
-        print('-' * 30)
+        self.janela = sg.Window('Simulador de Dados').layout(self.layout)
 
+    def simula_dado(self):
         while True:
-            print('Você quer jogar o dado novamente?')
-            escolha = input('Digite [SIM] para rodar e [NÃO] para não rodar: ').strip().lower()
-            print('-' * 30)
-            if escolha == 'sim':
-                numero_escolhido = randint(1, 6)
-                print('Número aleatório:',numero_escolhido)
-                print('-' * 30)
-            else:
-                print('o dado não será rodado')
-                print('-' * 30)
-                break
-    else:
-        print('o dado não será rodado')
-        print('-' * 30)
-    break
+            self.button = self.janela.Read()
+            print(randint(1, 6))
+
+tela = TelaSimulador()
+tela.simula_dado()

@@ -1,5 +1,4 @@
-# Simulador de Dado
-Simulador de dado com Python
+# Simulador de Dado com Python
 
 Como utilizar:
  - Instale o Python no seu computador
